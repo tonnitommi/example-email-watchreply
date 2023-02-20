@@ -1,0 +1,32 @@
+[
+  {
+      "payload": {
+        "Type": "output",
+        "Content": {
+          "email": {
+            "from": {
+              "name": "Tommi Holmgren",
+              "address": "tommi@robocorp.com"
+            },
+            "to": [
+              {
+                "name": "Some name",
+                "address": "robo@random-email-domain.com"
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "subject": "Test",
+            "date": "2023-02-17T08:35:28.000Z",
+            "text": "This is my message",
+            "body": "This is my message"
+          },
+          "parsedEmail": {
+            "Body": "This is my message"
+          }
+        }
+      },
+      "files": {
+      }
+  }
+]
