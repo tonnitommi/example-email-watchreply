@@ -12,15 +12,15 @@ Email watcher
 *** Keywords ***
 Process Email
     ${forwarded_email}=    Get Work Item Payload
-    Log   ${forwarded_email}[Content][email][from][address]
-    Log   ${forwarded_email}[Content][email][subject]
+    Log   ${forwarded_email}[email][from][address]
+    Log   ${forwarded_email}[email][subject]
 
     Authorize Gmail
 
     # Find the incoming message from gmail
     # TODO: Improve the List messages keyword to use more criteria from the forwarded email
     # to reduce the likelihood of multiple matches.
-    @{original_emails}  List Messages   FROM "${forwarded_email}[Content][email][from][address]" SUBJECT "${forwarded_email}[Content][email][subject]"
+    @{original_emails}  List Messages   FROM "${forwarded_email}[email][from][address]" SUBJECT "${forwarded_email}[email][subject]"
 
     # Check how many messages were found and only perform actions if there is one match.
     ${count}=    Get length    ${original_emails}
@@ -28,7 +28,7 @@ Process Email
         Log To Console    One message - processing id ${original_emails}[0][Message-ID]
 
         # Reply to message
-        Reply to message    ${forwarded_email}[Content][email]
+        Reply to message    ${forwarded_email}[email]
         # Flag message with "Robo-Processed"
         Move message to processed    ${original_emails}[0][Message-ID]
 
